@@ -1,11 +1,17 @@
-legend{
-    color: rgb(106, 74, 17);
-    border: 1px solid orange;
+.filter__product {
+  display: flex;
+  justify-content: center;
+
+  color: orange;
 }
-.container__categories__search input{
-    font-size: 2vh;
-    margin: 2vh;
+legend {
+  color: rgb(106, 74, 17);
+  border: 1px solid orange;
 }
-.container__categories__search label{
-    color: rgb(150, 105, 22);
+.container__categories__search input {
+  font-size: 2vh;
+  margin: 2vh;
+}
+.container__categories__search label {
+  color: rgb(150, 105, 22);
 }

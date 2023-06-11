@@ -1,30 +1,30 @@
-.container__form__user{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2vh;
+.container__form__user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh;
 }
-.container__data{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3vh;
+.container__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
 }
-.welcome__user{
-    font-size: 4vh;
-    color: orangered;
+.welcome__user {
+  font-size: 4vh;
+  color: orangered;
 }
-.data__tittle{
-    color: orange;
+.data__tittle {
+  color: orange;
 }
-.container__session{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    width: 60vh;
-    height: 20vh;
-    border-radius: 2vh;
-    border: 1px solid burlywood;
-    list-style: none;
+.container__session {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  width: 60vh;
+  height: 20vh;
+  border-radius: 2vh;
+  border: 1px solid burlywood;
+  list-style: none;
 }

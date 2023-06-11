@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useCategories } from "../../../Hooks/query/useCategories";
-import "./CategoriesFilter.css"
+import "./CategoriesFilter.css";
 
 const CategoriesFilter = ({
   formId,
@@ -40,8 +40,14 @@ const CategoriesFilter = ({
     else onChangeCategories();
   }, [categoryIdList, onChangeCategories]);
 
-  if (isLoading) return <p>loading categories...</p>;
-  if (isError) return <p>{error.message ?? "could not get categories"}</p>;
+  if (isLoading)
+    return <p className="filter__product">loading categories...</p>;
+  if (isError)
+    return (
+      <p className="filter__product">
+        {error.message ?? "could not get categories"}
+      </p>
+    );
 
   return (
     <fieldset form={formId}>

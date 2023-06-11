@@ -1,6 +1,5 @@
-.list__product{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4vh;
+.product__list__card__ {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vh;
 }

@@ -10,11 +10,11 @@ const ProductList = ({ categories, title, excludeIds = [] }) => {
     return <p className="loading__product">Opps, Something went wrong</p>;
 
   return (
-    <ul className="list__product">
+    <ul className="product__list__card__">
       {data
         .filter((product) => !excludeIds.includes(product.id))
         .map((product) => (
-          <li className="cart__product" key={product.id}>
+          <li className="product__list__card__" key={product.id}>
             <ProductsCard product={product} />
           </li>
         ))}

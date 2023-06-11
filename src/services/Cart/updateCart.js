@@ -1,9 +1,13 @@
 import { axiosInstance } from "../../api/axiosInstance";
 
 export const updateCart = async ({ carProductId, newQuantity, token }) => {
+  console.log(carProductId)
+  console.log(newQuantity)
+  console.log(token)
+
   try {
     const body = { quantity: newQuantity };
-    await axiosInstance.put(`cart/${carProductId}`, body, {
+     await axiosInstance.put(`cart/${carProductId}`, body, {
       headers: { Authorization: `Bearer ${token}` },
     });
   } catch (error) {

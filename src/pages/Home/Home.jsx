@@ -31,7 +31,7 @@ const Home = () => {
         />
       </aside>
       <section>
-        <Form  className="container__search" id={formId} ref={formRef}>
+        <Form className="container__search" id={formId} ref={formRef}>
           <p className="search">search</p>
           <input
             className="search__title"

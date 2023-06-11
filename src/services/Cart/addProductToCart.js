@@ -2,7 +2,7 @@ import { axiosInstance } from "../../api/axiosInstance";
 
 export const addProductToCart = async ({ token, quantity, productId }) => {
   try {
-    const body = { quantity, productId };
+    const body = { quantity, productId};
 
     await axiosInstance.post("cart", body, {
       headers: { Authorization: `Bearer ${token}` },
@@ -10,7 +10,7 @@ export const addProductToCart = async ({ token, quantity, productId }) => {
   } catch (error) {
     if (error.response)
       throw typeof error.response.data === "string"
-        ? new Error(error.response.data)
+        ?  new Error(error.response.data)
         : error.response.data;
     else throw new Error("Something went wrong with the cart request");
   }

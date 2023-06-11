@@ -24,35 +24,35 @@ const ProductsCard = ({ product }) => {
   };
 
   return (
-    <Link className="link__productId" to={"/product/" + product.id}>
-      <article className="product__cart">
+    <Link className="link__productId__link__l" to={"/product/" + product.id}>
+      <article className="product__cart__home_">
         <header className="product__cart__header">
           <div className="product__cart__container__img">
             <img
               src={product.images[0].url}
               alt={product.title + "image 1"}
-              className="product__cart__img product__cart__container__img--visible"
+              className="product__card__img_ product__cart__container__img--visible"
             />
             <img
               src={product.images[1].url}
               alt={product.title + "image 2"}
-              className="product__cart__img product__cart__container__img--hidden"
+              className="product__card__img_ product__cart__container__img--hidden"
             />
           </div>
-          <h3 className="product__cart__paragraph">{product.brand}</h3>
-          <h2 className="product__title">{product.title}</h2>
+          <h3 className="product__cart__paragraph_">{product.brand}</h3>
+          <h2 className="product__title__card_">{product.title}</h2>
         </header>
 
-        <section className="product__cart__body">
-          <h3 className="product__price">Price</h3>
-          <p className="product__cart__paragraph">
+        <section className="product__cart__body_">
+          <h3 className="product__price_">Price</h3>
+          <p className="product__cart__paragraph_">
             <em>{product.price}</em>
           </p>
         </section>
 
         {isAddVisible && (
           <button
-            className="product__cart__btn"
+            className="product__cart__btn_"
             onClick={handleAdd}
             disabled={isLoading}
           >
@@ -60,7 +60,11 @@ const ProductsCard = ({ product }) => {
           </button>
         )}
 
-        {!isAddVisible && <p>You already have this product in your cart</p>}
+        {!isAddVisible && (
+          <p className="add__visible_">
+            You already have this product in your cart
+          </p>
+        )}
       </article>
     </Link>
   );

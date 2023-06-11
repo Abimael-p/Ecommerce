@@ -8,7 +8,7 @@ export const useUpdateCart = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: ( carProductId, newQuantity ) =>
+    mutationFn: ({ carProductId, newQuantity }) =>
       updateCart({
         carProductId,
         newQuantity,
@@ -18,6 +18,6 @@ export const useUpdateCart = () => {
       await queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
-  
-  return mutation
+
+  return mutation;
 };

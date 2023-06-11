@@ -1,8 +1,8 @@
 import { axiosInstance } from "../../api/axiosInstance";
 
-export const getProductById = async ( productId ) => {
+export const getProductById = async (productId) => {
   try {
-    const res = await axiosInstance.get(`products/${productId}`)
+    const res = await axiosInstance.get(`products/${productId}`);
 
     return res.data;
   } catch (error) {

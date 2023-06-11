@@ -4,8 +4,8 @@ export const HomeLoader = ({ request }) => {
 
   const categories = url.searchParams
     .getAll("categories")
-    .filter(categoryId => Boolean(categoryId))
-    .map(categoryId => Number(categoryId));
+    .filter((categoryId) => Boolean(categoryId))
+    .map((categoryId) => Number(categoryId));
 
   return { categories, title };
 };

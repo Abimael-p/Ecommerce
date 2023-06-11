@@ -5,25 +5,25 @@ import CartProduct from "../CartProduct/CartProduct";
 import "./Cart.css";
 
 const Cart = ({ isVisible }) => {
-  const isLogged = useSelector(store => store.auth.isLoggedIn)
+  const isLogged = useSelector((store) => store.auth.isLoggedIn);
   const { data, isLoading, isError, error } = useCart();
-  const createPurchasesMutation = userCreatePurchases()
+  const createPurchasesMutation = userCreatePurchases();
 
-  const reducer = (acc, cartProduct) =>{
-  const quantity = Number(cartProduct.quantity);
-  const prices = Number(cartProduct.product.price);
-  
-  return acc + quantity * prices;
-  }
+  const reducer = (acc, cartProduct) => {
+    const quantity = Number(cartProduct.quantity);
+    const prices = Number(cartProduct.product.price);
+
+    return acc + quantity * prices;
+  };
   const total = data?.reduce(reducer, 0) ?? 0;
 
   const toggleCart = isVisible
     ? "wrapper__cart"
     : "wrapper__cart wrapper__cart--hidden";
 
-    const handleCheckout = () => {
-      if (isLogged) createPurchasesMutation.mutate()
-    }
+  const handleCheckout = () => {
+    if (isLogged) createPurchasesMutation.mutate();
+  };
 
   if (isLoading) return <p className={toggleCart}>Loading Cart...</p>;
   if (isError)
@@ -49,13 +49,19 @@ const Cart = ({ isVisible }) => {
               ))}
             </ul>
 
-            <div>
-                <p>
-                  <span>Total:</span>
-                  <em> $ {total.toFixed(2)}</em>
-                </p>
+            <div className="container__total">
+              <p>
+                <span>Total:</span>
+                <em> $ {total.toFixed(2)}</em>
+              </p>
 
-                <button onClick={handleCheckout} disabled={createPurchasesMutation.isLoading || isLoading}>Checkout</button>
+              <button
+                className="click__checkout__btn"
+                onClick={handleCheckout}
+                disabled={createPurchasesMutation.isLoading || isLoading}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         )}

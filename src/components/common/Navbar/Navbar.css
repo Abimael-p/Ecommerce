@@ -1,58 +1,56 @@
-.container__header__principal{
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    height: 14rem;
+.container__header__principal {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 14rem;
 
-    background-color: white;
+  background-color: white;
 }
-.header__container{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-    margin: 6;
+  margin: 6;
 }
-.container__header__principal{
-    display: flex;
-    justify-content: space-between;
+.container__header__principal {
+  display: flex;
+  justify-content: space-between;
 }
-.link__loading{
-    text-decoration: none;
+.link__loading {
+  text-decoration: none;
 }
-.tittle__name__app{
-    color: orange;
+.tittle__name__app {
+  color: orange;
 }
-.container__list{
-    display: flex;
-    list-style: none;
-    font-size: 4vh;
-    gap: 20vh;
-    margin: 5vh;
-    margin-bottom: 3vh;
+.container__list {
+  display: flex;
+  list-style: none;
+  font-size: 4vh;
+  gap: 20vh;
+  margin: 5vh;
+  margin-bottom: 3vh;
+}
+.btn__Cart__click {
+  font-size: 4vh;
+  height: 0;
 
-}
-.btn__Cart__click{
-    font-size: 4vh;
-    height: 0;
-    
-    background-color: rgb(253, 253, 253);
+  background-color: rgb(253, 253, 253);
 
-    border: none;
+  border: none;
 }
-.header__nav__link{
-    color: inherit;
+.header__nav__link {
+  color: inherit;
 }
-.header__nav_link--active{
-    color: rgb(255, 128, 1);
+.header__nav_link--active {
+  color: rgb(255, 128, 1);
 }
-.btn__reset__user{
-    border-radius: 1vh;
-    border: none;
-    height: 5vh;
-    width: 20vh;
-    background-color: orange;
-    margin-top: 4vh;
-    margin-right: 5vh;
+.btn__reset__user {
+  border-radius: 1vh;
+  border: none;
+  height: 5vh;
+  width: 20vh;
+  background-color: orange;
+  margin-top: 4vh;
+  margin-right: 5vh;
 }
-

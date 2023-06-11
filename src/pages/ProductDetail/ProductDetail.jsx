@@ -4,50 +4,83 @@ import ProductList from "../../components/Home/ProductList/ProductList";
 import { useAddProductToCart } from "../../Hooks/query/useAddProducttoCart";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import "./ProductDetail.css";
 import { useCart } from "../../Hooks/query/useCart";
+import { updateCart } from "../../services/Cart/updateCart";
+import "./ProductDetail.css";
 
 const ProductDetail = () => {
-  const cartQuery = useCart();
-  const navigate = useNavigate();
-  const { productId } = useParams();
-  const { mutate } = useAddProductToCart();
-  const { data, isLoading, isError, error } = useProductById(productId);
   const isLogged = useSelector((store) => store.auth.isLoggedIn);
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const cartQuery = useCart();
+  const token = useSelector((store) => store.auth.token);
+  const { data, isLoading, isError, error } = useProductById(productId);
+  const { mutate } = useAddProductToCart();
 
   const isProductInCart =
     cartQuery.data?.some((cartProduct) => cartProduct.productId === data.id) ??
     false;
 
-  const quantityInCart = cartQuery.data?.find(
-    (cartProduct) => Number(cartProduct.productId) === Number(productId)
-  )?.quantity;
+  const quantityInCart =
+    cartQuery.data?.find((cartProduct) => cartProduct.productId === productId)
+      ?.quantity ?? 1;
 
-  const [quantity, setQuantity] = useState(Number(quantityInCart));
+  const [quantity, setQuantity] = useState(quantityInCart ?? 1);
+  console.log(quantity);
 
   const increment = () => {
     const newQuantity = quantity + 1;
     const stockIncrement = 10;
-    if (newQuantity <= stockIncrement) setQuantity(newQuantity);
+    if (newQuantity <= stockIncrement) {
+      setQuantity(newQuantity);
+    }
   };
 
   const decrement = () => {
     const newQuantity = quantity - 1;
     const stockDecrement = 1;
-    if (newQuantity >= stockDecrement) setQuantity(newQuantity);
+    if (newQuantity >= stockDecrement) {
+      setQuantity(newQuantity);
+    }
   };
 
-  const handleAddCart = () => {
-    if (!isLogged) mutate({ quantity, productId });
-    else navigate("/login");
+  const handleAddCart =  () => {
+    if (isLogged) {
+     mutate({ quantity, productId });
+      navigate("/login");
+    }
   };
+
+  const handleUpdate = async ( carProductId, newQuantity) => {
+    if (isProductInCart) {
+      try {
+        await updateCart({
+          carProductId,
+          newQuantity,
+          token,
+        });
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error("Error updating cart:", error.message);
+        } else {
+          console.error("Error updating cart:", error);
+        }
+      }
+    }
+  }
 
   useEffect(() => {
     setQuantity(quantityInCart);
   }, [quantityInCart]);
 
-  if (isLoading) return <p>loading product...</p>;
-  if (isError) return <p>{error.message ?? "Product could not be loaded"}</p>;
+  if (isLoading)
+    return <p className="loading__product__detail">loading product...</p>;
+  if (isError)
+    return (
+      <p className="loading__product__detail">
+        {error.message ?? "Product could not be loaded"}
+      </p>
+    );
 
   return (
     <section className="class__container__description">
@@ -92,14 +125,20 @@ const ProductDetail = () => {
               </button>
             )}
 
-            {isProductInCart && <button className="update__button">Update in cart</button>}
+            {isProductInCart && (
+              <button
+                onClick={() => handleUpdate(data.id, quantity)}
+                className="update__button"
+              >
+                Update in cart
+              </button>
+            )}
           </div>
         </div>
       </section>
       <p className="products__similar">similar products</p>
       <div className="container__list__product">
-      <ProductList categories={data.categoryId} excludeIds={[data.id]} />
-
+        <ProductList categories={data.categoryId} excludeIds={[data.id]} />
       </div>
     </section>
   );

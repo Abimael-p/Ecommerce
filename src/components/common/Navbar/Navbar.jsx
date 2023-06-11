@@ -16,14 +16,14 @@ const Navbar = ({ updateCartVisible }) => {
   };
 
   const getClass = ({ isActive }) => {
-    if (isActive) return "header__nav__link header__nav_link--active"
-    else return "header__nav__link"
-  }
+    if (isActive) return "header__nav__link header__nav_link--active";
+    else return "header__nav__link";
+  };
 
   const handleCartClick = () => {
-    if(isLogged) updateCartVisible();
-    else navigate("/login")
-  }
+    if (isLogged) updateCartVisible();
+    else navigate("/login");
+  };
 
   return (
     <header className="container__header__principal">
