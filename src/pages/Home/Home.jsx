@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import ProductList from "../../components/Home/ProductList/ProductList";
-import CategoriesFilter from "../../components/Home/categoriesFilter/categoriesFilter";
+import CategoriesFilter from "../../components/Home/CategoriesFilter/CategoriesFilter";
 import { Form, useLoaderData, useSubmit } from "react-router-dom";
 import "./Home.css";
 
