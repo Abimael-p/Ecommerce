@@ -20,6 +20,7 @@ const ProductDetail = () => {
   const isProductInCart =
     cartQuery.data?.some((cartProduct) => cartProduct.productId === data.id) ??
     false;
+    console
 
   const quantityInCart =
     cartQuery.data?.find((cartProduct) => cartProduct.productId === productId)
