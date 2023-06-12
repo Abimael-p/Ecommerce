@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useCategories } from "../../../Hooks/query/useCategories";
-import "./CategoriesFilter.css";
+import "./FilterCategories.css";
 
-const CategoriesFilter = ({
+const FilterCategories = ({
   formId,
   onChangeCategories,
   initialCategories = [],
@@ -82,4 +82,4 @@ const CategoriesFilter = ({
   );
 };
 
-export default CategoriesFilter;
+export default FilterCategories;

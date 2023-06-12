@@ -18,11 +18,11 @@ const ProductDetail = () => {
   const { mutate } = useAddProductToCart();
 
   const isProductInCart =
-    cartQuery.data?.some((cartProduct) => cartProduct.productId === data.id) ??
+    cartQuery.data?.some((cartProduct) => Number(cartProduct.productId === data.id)) ??
     false;
 
   const quantityInCart =
-    cartQuery.data?.find((cartProduct) => cartProduct.productId === productId)
+    cartQuery.data?.find((cartProduct) => Number(cartProduct.productId === productId))
       ?.quantity ?? 1;
 
   const [quantity, setQuantity] = useState(quantityInCart ?? 1);
@@ -44,15 +44,18 @@ const ProductDetail = () => {
     }
   };
 
-  const handleAddCart =  () => {
+  const handleAddCart =  (e) => {
     if (isLogged) {
      mutate({ quantity, productId });
+     e.preventDefoult()
       navigate("/login");
     }
   };
 
-  const handleUpdate = async ( carProductId, newQuantity) => {
-    if (isProductInCart) {
+  
+
+  const handleUpdate = async (carProductId,  newQuantity) => {
+    if (isProductInCart == true) {
       try {
         await updateCart({
           carProductId,
@@ -127,7 +130,7 @@ const ProductDetail = () => {
 
             {isProductInCart && (
               <button
-                onClick={() => handleUpdate(data.id, quantity)}
+                onClick={() => handleUpdate(productId, quantity)}
                 className="update__button"
               >
                 Update in cart

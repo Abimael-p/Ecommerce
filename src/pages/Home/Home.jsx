@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import ProductList from "../../components/Home/ProductList/ProductList";
-import CategoriesFilter from "../../components/Home/CategoriesFilter/CategoriesFilter";
+import FilterCategories from "../../components/Home/FilterCategories/FilterCategories";
 import { Form, useLoaderData, useSubmit } from "react-router-dom";
 import "./Home.css";
 
@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="home__container">
       <aside>
-        <CategoriesFilter
+        <FilterCategories
           formId={formId}
           onChangeCategories={handleChangeCategories}
           initialCategories={categories}
