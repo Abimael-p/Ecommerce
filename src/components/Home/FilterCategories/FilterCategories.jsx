@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useCategories } from "../../../Hooks/query/useCategories";
 import "./FilterCategories.css";
 
-const FilterCategories = ({
+const FilterToCategories = ({
   formId,
   onChangeCategories,
   initialCategories = [],
@@ -82,4 +82,4 @@ const FilterCategories = ({
   );
 };
 
-export default FilterCategories;
+export default FilterToCategories;
