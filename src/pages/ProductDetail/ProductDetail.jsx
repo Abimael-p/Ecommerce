@@ -18,7 +18,7 @@ const ProductDetail = () => {
   const { mutate } = useAddProductToCart();
 
   const isProductInCart =
-    cartQuery.data?.some((cartProduct) => Number(cartProduct.productId === data.id)) ??
+    cartQuery.data?.some((cartProduct) => Number(cartProduct.productId === data?.id)) ??
     false;
 
   const quantityInCart =
@@ -26,7 +26,6 @@ const ProductDetail = () => {
       ?.quantity ?? 1;
 
   const [quantity, setQuantity] = useState(quantityInCart ?? 1);
-  console.log(quantity);
 
   const increment = () => {
     const newQuantity = quantity + 1;
@@ -52,15 +51,13 @@ const ProductDetail = () => {
     }
   };
 
-  
-
   const handleUpdate = async (carProductId,  newQuantity) => {
     if (isProductInCart == true) {
       try {
         await updateCart({
-          carProductId,
-          newQuantity,
-          token,
+          carProductId:carProductId,
+          newQuantity: newQuantity,
+          token: token,
         });
       } catch (error) {
         if (error instanceof Error) {
@@ -89,8 +86,8 @@ const ProductDetail = () => {
     <section className="class__container__description">
       <section className="container__description__product">
         <div className="container__img">
-          <img className="image__1" src={data.images[0].url} alt={data.title} />
-          <img src={data.images[1].url} alt={data.title} />
+          <img className="image__1" src={data.images?.[0].url} alt={data.title} />
+          <img src={data.images?.[1].url} alt={data.title} />
         </div>
 
         <div className="container__description">

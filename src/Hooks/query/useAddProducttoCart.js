@@ -4,7 +4,6 @@ import { addProductToCart } from "../../services/Cart/addProductToCart";
 
 export const useAddProductToCart = () => {
   const token = useSelector((store) => store.auth.token);
-
   const QueryClient = useQueryClient();
 
   const mutation = useMutation({

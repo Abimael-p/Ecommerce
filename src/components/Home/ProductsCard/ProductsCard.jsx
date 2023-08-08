@@ -10,6 +10,7 @@ const ProductsCard = ({ product }) => {
   const isLogged = useSelector((store) => store.auth.isLoggedIn);
   const navigate = useNavigate();
 
+
   const isProductInCart = data?.some(
     (cartProduct) => cartProduct.productId === product.id
   );

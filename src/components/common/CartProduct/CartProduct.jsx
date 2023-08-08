@@ -12,6 +12,7 @@ const CartProduct = ({ cartProduct }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
   const islogged = useSelector((store) => store.auth.isloggedIn);
 
+
   const increment = () => {
     const newQuantity = quantity + 1;
     const stockIncrement = 10;
@@ -39,7 +40,7 @@ const CartProduct = ({ cartProduct }) => {
     <article className="cart__product">
       <div className="cart__product__img__img">
         <img
-          src={cartProduct.product.images[0].url}
+          src={cartProduct.product.images?.[0].url}
           alt={cartProduct.product.title}
         />
       </div>

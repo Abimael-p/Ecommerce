@@ -9,6 +9,7 @@ const ProductList = ({ categories, title, excludeIds = [] }) => {
   if (isError)
     return <p className="loading__product">Opps, Something went wrong</p>;
 
+
   return (
     <ul className="product__list__card__">
       {data

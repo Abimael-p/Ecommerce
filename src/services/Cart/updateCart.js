@@ -1,9 +1,6 @@
 import { axiosInstance } from "../../api/axiosInstance";
 
 export const updateCart = async ({ carProductId, newQuantity, token }) => {
-  console.log(carProductId)
-  console.log(newQuantity)
-  console.log(token)
 
   try {
     const body = { quantity: newQuantity };
