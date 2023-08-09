@@ -3,14 +3,13 @@ import { createPurchase } from "../../services/purchases/createPurchases";
 import { useSelector } from "react-redux";
 
 export const userCreatePurchases = () => {
+  const queryClient = useQueryClient();
   const token = useSelector((store) => store.auth.token);
-  const queryCliente = useQueryClient();
 
-  const mutation = useMutation({
-    mutationFn: () => createPurchase(token),
+  const mutation = useMutation(({ productId, quantity }) => createPurchase(token, productId, quantity), {
     onSuccess: async () => {
-      await queryCliente.invalidateQueries({ queryKey: ["cart"] });
-      await queryCliente.invalidateQueries({ queryKey: ["purchases"] });
+      await queryClient.invalidateQueries({ queryKey: ["cart"] });
+      await queryClient.invalidateQueries({ queryKey: ["purchases"] });
     },
   });
 

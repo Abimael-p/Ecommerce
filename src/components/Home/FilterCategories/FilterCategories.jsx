@@ -11,6 +11,7 @@ const FilterToCategories = ({
   const [categoryIdList, setcategoryIdList] = useState(initialCategories);
   const isFirstRender = useRef(true);
 
+
   const addIdToList = (categoryId) => {
     const copyList = structuredClone(categoryIdList);
     copyList.push(categoryId);

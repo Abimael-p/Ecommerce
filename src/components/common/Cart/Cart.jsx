@@ -22,7 +22,16 @@ const Cart = ({ isVisible }) => {
     : "wrapper__cart wrapper__cart--hidden";
 
   const handleCheckout = () => {
-    if (isLogged)console.log(createPurchasesMutation.mutate());
+    if (isLogged) {
+      data.forEach((cartProduct) => {
+        const { id: productId } = cartProduct.product;
+        createPurchasesMutation.mutate({
+          productId,
+          quantity: cartProduct.quantity,
+        });
+        return <p>gracias por su compra</p>
+      });
+    }
   };
 
   if (isLoading) return <p className={toggleCart}>Loading Cart...</p>;
